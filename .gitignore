@@ -83,6 +83,8 @@ jspm_packages/
 # next.js build output
 .next
 
+build
+
 # Lerna
 lerna-debug.log
 
