@@ -1,6 +1,18 @@
+import {
+  AppBar,
+  Container,
+  Grid,
+  Paper,
+  TextField,
+  Toolbar,
+  Typography,
+  styled,
+} from "@mui/material";
 import React, { useState } from "react";
 import "./App.css";
-import RecommendationSlider from "./RecommendationSlider";
+import AlgorithmCheckboxes from "./components/AlgorithmCheckboxes";
+import FancyButton from "./components/FancyButton";
+import RecommendationSlider from "./components/RecommendationSlider";
 
 function App() {
   const [sku, setSku] = useState("");
@@ -13,6 +25,13 @@ function App() {
     // Make API call with the user input (title, price, image)
     // Update the state with the response from the API
     // Display the recommendation sliders based on the returned data
+  };
+
+  const productToCompare = {
+    id: 9999,
+    title: "Default Item",
+    price: "$29.99",
+    image: "https://source.unsplash.com/random/150x150/?default",
   };
 
   const carouselData = [
@@ -109,16 +128,75 @@ function App() {
     // Add more items as needed
   ];
 
+  const Item = styled(Paper)(({ theme }) => ({
+    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: "center",
+    color: theme.palette.text.secondary,
+  }));
+
   return (
     <div className="App">
-      <h1>Recommendation Slider App</h1>
-      <div>
-        <label>SKU:</label>
-        <input type="text" value={sku} onChange={handleTitleChange} />
-      </div>
-      <button onClick={handleSubmit}>Submit</button>
-      {/* Display the recommendation sliders here */}
-      <RecommendationSlider sliderName="default" products={carouselData} />
+      <AppBar position="static">
+        <Toolbar>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            Recommendation Slider Comparison Tool
+          </Typography>
+        </Toolbar>
+      </AppBar>
+      <Container sx={{ mt: 4 }}>
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="h2"
+              gutterBottom
+            >
+              Select Algorithms
+            </Typography>
+            <AlgorithmCheckboxes />
+          </Grid>
+          <Grid item xs={2}>
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="h2"
+              gutterBottom
+            >
+              Search For a SKU
+            </Typography>
+            <TextField id="outlined-basic" label="SKU" variant="outlined" />
+          </Grid>
+          <FancyButton buttonText="Search SKU" />
+          <FancyButton buttonText="Random SKU" />
+          <Grid item xs={2}>
+            <Typography
+              variant="h6"
+              color="textSecondary"
+              component="h2"
+              gutterBottom
+            >
+              SKU to Compare
+            </Typography>
+            {console.log(productToCompare)}
+            <div className="slider-slide" key={productToCompare.id}>
+              <img
+                src={productToCompare.image}
+                alt={productToCompare.title}
+                className=""
+              />
+              <h3>{productToCompare.title}</h3>
+              <p>{productToCompare.price}</p>
+            </div>
+          </Grid>
+        </Grid>
+        <RecommendationSlider
+          sliderName="Algorithm 1"
+          products={carouselData}
+        />
+      </Container>
     </div>
   );
 }
