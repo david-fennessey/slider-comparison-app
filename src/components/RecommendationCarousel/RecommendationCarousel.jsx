@@ -2,12 +2,22 @@ import React from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import ProductTile from "./ProductTile";
 
-const RecommendationSlider = ({ sliderName, products }) => {
+const ProductTile = ({ index, product }) => {
+  return (
+    <div className="slide" key={index}>
+      {console.log(index)}
+      <img src={product.image} alt={product.title} />
+      <div className="title">{product.title}</div>
+      <div className="price">{product.price}</div>
+    </div>
+  );
+};
+
+const RecommendationCarousel = ({ sliderName, products }) => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 6,
     slidesToScroll: 6,
@@ -43,10 +53,12 @@ const RecommendationSlider = ({ sliderName, products }) => {
     <div>
       <h2>{sliderName}</h2>
       <Slider {...settings}>
-        {products.map((product, index) => ProductTile(index, product))}
+        {products.map((product, index) => (
+          <ProductTile index={index} product={product} />
+        ))}
       </Slider>
     </div>
   );
 };
 
-export default RecommendationSlider;
+export default RecommendationCarousel;

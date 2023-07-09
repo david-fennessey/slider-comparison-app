@@ -6,7 +6,9 @@ const FancyButton = ({ buttonText }) => {
   return (
     <div>
       <Stack spacing={2} direction="row">
-        <Button variant="outlined">{buttonText}</Button>
+        <Button variant="outlined" onClick={() => console.log("hello")}>
+          {buttonText}
+        </Button>
       </Stack>
     </div>
   );

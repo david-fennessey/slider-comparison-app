@@ -2,17 +2,15 @@ import {
   AppBar,
   Container,
   Grid,
-  Paper,
   TextField,
   Toolbar,
   Typography,
-  styled,
 } from "@mui/material";
 import React, { useState } from "react";
 import "./App.css";
-import AlgorithmCheckboxes from "./components/AlgorithmCheckboxes";
 import FancyButton from "./components/FancyButton";
-import RecommendationSlider from "./components/RecommendationSlider";
+import ModelCheckboxes from "./components/ModelCheckboxes/ModelCheckboxes";
+import CarouselContainer from "./components/RecommendationCarousel";
 
 function App() {
   const [sku, setSku] = useState("");
@@ -27,114 +25,41 @@ function App() {
     // Display the recommendation sliders based on the returned data
   };
 
+  // We enable the first algorithm by default, so we set the first element to true. Rest start as invisible
+  const [models, setModelState] = useState({
+    foo: {
+      name: "foo",
+      visible: true,
+      url: "http://localhost:3030/algorithm-1",
+    },
+    bar: {
+      name: "bar",
+      visible: false,
+      url: "http://localhost:3030/algorithm-2",
+    },
+    baz: {
+      name: "baz",
+      visible: false,
+      url: "http://localhost:3030/algorithm-3",
+    },
+  });
+
+  const [searchSku, setSearchSku] = useState();
+
+  const handleToggleDiv = (key) => {
+    setModelState({
+      ...models,
+      [key]: { ...models[key], visible: !models[key].visible },
+    });
+  };
+
   const productToCompare = {
     id: 9999,
+    sku: "2802439",
     title: "Default Item",
     price: "$29.99",
     image: "https://source.unsplash.com/random/150x150/?default",
   };
-
-  const carouselData = [
-    {
-      id: 1,
-      title: "Wireless Bluetooth Headphones",
-      price: "$69.99",
-      image: "https://source.unsplash.com/random/150x150/?headphones",
-    },
-    {
-      id: 2,
-      title: "Smart Watch with Heart Rate Monitoring",
-      price: "$129.99",
-      image: "https://source.unsplash.com/random/150x150/?smartwatch",
-    },
-    {
-      id: 3,
-      title: "Portable Espresso Machine",
-      price: "$79.99",
-      image: "https://source.unsplash.com/random/150x150/?espresso",
-    },
-    {
-      id: 4,
-      title: "Wireless Charging Pad",
-      price: "$29.99",
-      image: "https://source.unsplash.com/random/150x150/?wirelesscharger",
-    },
-    {
-      id: 5,
-      title: "Noise Cancelling Earbuds",
-      price: "$49.99",
-      image: "https://source.unsplash.com/random/150x150/?earbuds",
-    },
-    {
-      id: 6,
-      title: "Waterproof Bluetooth Speaker",
-      price: "$39.99",
-      image: "https://source.unsplash.com/random/150x150/?bluetoothspeaker",
-    },
-    {
-      id: 7,
-      title: "Fitness Tracker Watch",
-      price: "$59.99",
-      image: "https://source.unsplash.com/random/150x150/?fitbit",
-    },
-    {
-      id: 8,
-      title: "Portable Power Bank",
-      price: "$24.99",
-      image: "https://source.unsplash.com/random/150x150/?powerbank",
-    },
-    {
-      id: 9,
-      title: "Wireless Gaming Mouse",
-      price: "$49.99",
-      image: "https://source.unsplash.com/random/150x150/?gamingmouse",
-    },
-    {
-      id: 10,
-      title: "Mini Drone with Camera",
-      price: "$89.99",
-      image: "https://source.unsplash.com/random/150x150/?drone",
-    },
-    {
-      id: 11,
-      title: "Bluetooth Car Kit",
-      price: "$34.99",
-      image: "https://source.unsplash.com/random/150x150/?carkit",
-    },
-    {
-      id: 12,
-      title: "Wireless Noise Cancelling Headphones",
-      price: "$149.99",
-      image: "https://source.unsplash.com/random/150x150/?wirelessheadphones",
-    },
-    {
-      id: 13,
-      title: "Smart Home Security Camera",
-      price: "$89.99",
-      image: "https://source.unsplash.com/random/150x150/?securitycamera",
-    },
-    {
-      id: 14,
-      title: "Wireless Bluetooth Speaker",
-      price: "$59.99",
-      image: "https://source.unsplash.com/random/150x150/?bluetoothspeaker",
-    },
-    {
-      id: 15,
-      title: "Portable Water Purifier",
-      price: "$49.99",
-      image: "https://source.unsplash.com/random/150x150/?water",
-    },
-    // Add more items as needed
-  ];
-
-  const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
-    ...theme.typography.body2,
-    padding: theme.spacing(1),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
-  }));
 
   return (
     <div className="App">
@@ -156,7 +81,10 @@ function App() {
             >
               Select Algorithms
             </Typography>
-            <AlgorithmCheckboxes />
+            <ModelCheckboxes
+              models={models}
+              setModelVisibility={handleToggleDiv}
+            />
           </Grid>
           <Grid item xs={2}>
             <Typography
@@ -167,7 +95,12 @@ function App() {
             >
               Search For a SKU
             </Typography>
-            <TextField id="outlined-basic" label="SKU" variant="outlined" />
+            <TextField
+              id="outlined-basic"
+              label="SKU"
+              variant="outlined"
+              onChange={(value) => setSearchSku(value)}
+            />
           </Grid>
           <FancyButton buttonText="Search SKU" />
           <FancyButton buttonText="Random SKU" />
@@ -178,24 +111,32 @@ function App() {
               component="h2"
               gutterBottom
             >
-              SKU to Compare
+              Anchor SKU
             </Typography>
-            {console.log(productToCompare)}
-            <div className="slider-slide" key={productToCompare.id}>
+            <div className="sku-layout" key={productToCompare.id}>
               <img
                 src={productToCompare.image}
                 alt={productToCompare.title}
                 className=""
               />
               <h3>{productToCompare.title}</h3>
+              <h5>SKU: {productToCompare.sku}</h5>
               <p>{productToCompare.price}</p>
             </div>
           </Grid>
         </Grid>
-        <RecommendationSlider
-          sliderName="Algorithm 1"
-          products={carouselData}
-        />
+        {Object.values(models).map((model) => {
+          if (model.visible) {
+            return (
+              <CarouselContainer
+                key={model.name}
+                url={model.url}
+                carouselName={model.name}
+                searchSku={searchSku}
+              />
+            );
+          }
+        })}
       </Container>
     </div>
   );
