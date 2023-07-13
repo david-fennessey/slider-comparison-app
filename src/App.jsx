@@ -76,7 +76,7 @@ const AppContainer = () => {
         </Toolbar>
       </AppBar>
       <Offset />
-      <Box sx={{ display: "flex", flexGrow: 1 }}>
+      <Box sx={{ display: "flex", alignSelf: "flex-start" }}>
         <Box
           sx={{
             width: drawerWidth,
