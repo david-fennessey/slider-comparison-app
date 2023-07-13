@@ -1,59 +1,49 @@
+import { useState } from "react";
+
+import styled from "@emotion/styled";
 import {
   AppBar,
+  Box,
   Container,
-  Grid,
-  TextField,
+  CssBaseline,
   Toolbar,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+
+import Content from "./components/Content";
+import Sidebar from "./components/Sidebar";
+
 import "./App.css";
-import FancyButton from "./components/FancyButton";
-import ModelCheckboxes from "./components/ModelCheckboxes/ModelCheckboxes";
-import CarouselContainer from "./components/RecommendationCarousel";
 
-function App() {
-  const [sku, setSku] = useState("");
+const Offset = styled("div")(({ theme }) => theme.mixins.toolbar);
+const drawerWidth = 240;
 
-  const handleTitleChange = (event) => {
-    setSku(event.target.value);
-  };
-
-  const handleSubmit = () => {
-    // Make API call with the user input (title, price, image)
-    // Update the state with the response from the API
-    // Display the recommendation sliders based on the returned data
-  };
-
+const AppContainer = () => {
   // We enable the first algorithm by default, so we set the first element to true. Rest start as invisible
   const [models, setModelState] = useState({
-    foo: {
+    1: {
+      id: 1,
       name: "foo",
       visible: true,
       url: "http://localhost:3030/algorithm-1",
     },
-    bar: {
+    2: {
+      id: 2,
       name: "bar",
       visible: false,
       url: "http://localhost:3030/algorithm-2",
     },
-    baz: {
+    3: {
+      id: 3,
       name: "baz",
       visible: false,
       url: "http://localhost:3030/algorithm-3",
     },
   });
 
-  const [searchSku, setSearchSku] = useState();
+  const [anchorSku, setAnchorSku] = useState(null);
 
-  const handleToggleDiv = (key) => {
-    setModelState({
-      ...models,
-      [key]: { ...models[key], visible: !models[key].visible },
-    });
-  };
-
-  const productToCompare = {
+  const anchorSkuProduct = {
     id: 9999,
     sku: "2802439",
     title: "Default Item",
@@ -61,85 +51,53 @@ function App() {
     image: "https://source.unsplash.com/random/150x150/?default",
   };
 
+  const toggleModelVisibility = (key) => {
+    setModelState({
+      ...models,
+      [key]: { ...models[key], visible: !models[key].visible },
+    });
+  };
+
   return (
-    <div className="App">
-      <AppBar position="static">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        height: "100vh",
+        backgroundColor: "rgba(0, 0, 0, 0.05)",
+      }}
+    >
+      <CssBaseline />
+      <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Typography variant="h6" component="div">
             Recommendation Slider Comparison Tool
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container sx={{ mt: 4 }}>
-        <Grid container spacing={2}>
-          <Grid item xs={2}>
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              component="h2"
-              gutterBottom
-            >
-              Select Algorithms
-            </Typography>
-            <ModelCheckboxes
-              models={models}
-              setModelVisibility={handleToggleDiv}
-            />
-          </Grid>
-          <Grid item xs={2}>
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              component="h2"
-              gutterBottom
-            >
-              Search For a SKU
-            </Typography>
-            <TextField
-              id="outlined-basic"
-              label="SKU"
-              variant="outlined"
-              onChange={(value) => setSearchSku(value)}
-            />
-          </Grid>
-          <FancyButton buttonText="Search SKU" />
-          <FancyButton buttonText="Random SKU" />
-          <Grid item xs={2}>
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              component="h2"
-              gutterBottom
-            >
-              Anchor SKU
-            </Typography>
-            <div className="sku-layout" key={productToCompare.id}>
-              <img
-                src={productToCompare.image}
-                alt={productToCompare.title}
-                className=""
-              />
-              <h3>{productToCompare.title}</h3>
-              <h5>SKU: {productToCompare.sku}</h5>
-              <p>{productToCompare.price}</p>
-            </div>
-          </Grid>
-        </Grid>
-        {Object.values(models).map((model) => {
-          if (model.visible) {
-            return (
-              <CarouselContainer
-                key={model.name}
-                url={model.url}
-                carouselName={model.name}
-                searchSku={searchSku}
-              />
-            );
-          }
-        })}
-      </Container>
-    </div>
+      <Offset />
+      <Box sx={{ display: "flex", flexGrow: 1 }}>
+        <Box
+          sx={{
+            width: drawerWidth,
+            padding: "1rem",
+          }}
+        >
+          <Sidebar
+            models={models}
+            setModelVisibility={toggleModelVisibility}
+            setAnchorSku={setAnchorSku}
+            anchorSkuProduct={anchorSkuProduct}
+          />
+        </Box>
+        <Box component="main" sx={{ flexGrow: 1, p: "1rem", overflow: "auto" }}>
+          <Container>
+            <Content models={models} anchorSku={anchorSku} />
+          </Container>
+        </Box>
+      </Box>
+    </Box>
   );
-}
+};
 
-export default App;
+export default AppContainer;

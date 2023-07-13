@@ -1,5 +1,7 @@
-import { isEmpty } from "lodash";
 import { useEffect, useState } from "react";
+
+import { isEmpty } from "lodash";
+
 import RecommendationCarousel from "./RecommendationCarousel";
 
 const CarouselContainer = ({ url, carouselName, searchSku }) => {
