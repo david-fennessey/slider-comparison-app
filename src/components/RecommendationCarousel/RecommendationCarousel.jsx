@@ -26,9 +26,9 @@ const ProductTile = ({ product }) => {
         color="textPrimary"
         component="p"
         sx={{
-          padding: "4px",
+          padding: "2px",
           flexGrow: 1,
-          fontSize: "12px",
+          fontSize: "11px",
           maxWidth: "100%",
           overflow: "hidden",
           textOverflow: "ellipsis",
@@ -47,7 +47,7 @@ const ProductTile = ({ product }) => {
         component="p"
         gutterBottom
       >
-        {product.price}
+        Score: {product.score}
       </Typography>
     </Box>
   );

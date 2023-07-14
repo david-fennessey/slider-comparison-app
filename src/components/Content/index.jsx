@@ -16,7 +16,7 @@ const Content = ({ searchSku, models }) => {
           return (
             <CarouselContainer
               key={model.id}
-              url={model.url}
+              fetchDataFunction={model.data}
               carouselName={model.name}
               searchSku={searchSku}
             />

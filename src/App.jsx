@@ -12,6 +12,9 @@ import {
 
 import Content from "./components/Content";
 import Sidebar from "./components/Sidebar";
+import loadAndParseSourceA from "./utilities/load_source_a";
+import loadAndParseSourceB from "./utilities/load_source_b";
+import loadAndParseSourceC from "./utilities/load_source_c";
 
 import "./App.css";
 
@@ -23,21 +26,21 @@ const AppContainer = () => {
   const [models, setModelState] = useState({
     1: {
       id: 1,
-      name: "foo",
+      name: "Source A",
       visible: true,
-      url: "http://localhost:3030/algorithm-1",
+      data: loadAndParseSourceA,
     },
     2: {
       id: 2,
-      name: "bar",
+      name: "Source B",
       visible: false,
-      url: "http://localhost:3030/algorithm-2",
+      data: loadAndParseSourceB,
     },
     3: {
       id: 3,
-      name: "baz",
+      name: "Source C",
       visible: false,
-      url: "http://localhost:3030/algorithm-3",
+      data: loadAndParseSourceC,
     },
   });
 

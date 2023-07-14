@@ -1,0 +1,67 @@
+{
+	"skuA":  [
+		{
+		  "id": 1,
+		  "title": "Wireless Bluetooth Headphones aosidjfaoidjf aodfsi jaoisdfja odsifj asdofij ",
+		  "score": 1,
+		  "price": "$69.99",
+		  "image": "https://source.unsplash.com/random/150x150/?headphones"
+		},
+		{
+		  "id": 2,
+		  "title": "Smart Watch with Heart Rate Monitoring",
+		  "score": 0.87423745,
+		  "price": "$129.99",
+		  "image": "https://source.unsplash.com/random/150x150/?smartwatch"
+		},
+		{
+		  "id": 3,
+		  "title": "Portable Espresso Machine",
+		  "score": 0.65478923,
+		  "price": "$79.99",
+		  "image": "https://source.unsplash.com/random/150x150/?espresso"
+		},
+		{
+		  "id": 4,
+		  "title": "Wireless Charging Pad",
+		  "score": 0.47856231,
+		  "price": "$29.99",
+		  "image": "https://source.unsplash.com/random/150x150/?wirelesscharger"
+		},
+		{
+		  "id": 5,
+		  "title": "Noise Cancelling Earbuds",
+		  "score": 0.25789457,
+		  "price": "$49.99",
+		  "image": "https://source.unsplash.com/random/150x150/?earbuds"
+		},
+		{
+		  "id": 6,
+		  "title": "Waterproof Bluetooth Speaker",
+		  "score": 0.15648792,
+		  "price": "$39.99",
+		  "image": "https://source.unsplash.com/random/150x150/?bluetoothspeaker"
+		},
+		{
+		  "id": 7,
+		  "title": "Fitness Tracker Watch",
+		  "score": 0.08321342,
+		  "price": "$59.99",
+		  "image": "https://source.unsplash.com/random/150x150/?fitbit"
+		},
+		{
+		  "id": 8,
+		  "title": "Portable Power Bank",
+		  "score": 0.05123656,
+		  "price": "$24.99",
+		  "image": "https://source.unsplash.com/random/150x150/?powerbank"
+		},
+		{
+		  "id": 9,
+		  "title": "Wireless Gaming Mouse",
+		  "score": 0.02134567,
+		  "price": "$49.99",
+		  "image": "https://source.unsplash.com/random/150x150/?gamingmouse"
+		}
+	  ]
+}
