@@ -37,7 +37,6 @@ const Sidebar = ({
         >
           Query SKU
         </Typography>
-        {console.log(querySkuModel)}
         {querySkuModel ? (
           <ProductTile product={querySkuModel} />
         ) : (

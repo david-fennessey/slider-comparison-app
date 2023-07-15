@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import CarouselContainer from "../RecommendationCarousel";
 
-const Content = ({ searchSku, models }) => {
+const Content = ({ querySku, models }) => {
   return (
     <Box
       sx={{
@@ -18,10 +18,11 @@ const Content = ({ searchSku, models }) => {
               key={model.id}
               fetchDataFunction={model.data}
               carouselName={model.name}
-              searchSku={searchSku}
+              querySku={querySku}
             />
           );
         }
+        return null; // Add this line to return a default value if model.visible is false
       })}
     </Box>
   );

@@ -58,8 +58,6 @@ const AppContainer = () => {
     });
   };
 
-  console.log(querySkuModel);
-
   return (
     <Box
       sx={{

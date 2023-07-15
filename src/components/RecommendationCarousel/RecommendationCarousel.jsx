@@ -16,7 +16,6 @@ const productTileStyle = {
   margin: "10px",
   backgroundColor: "#f0f0f0",
   borderRadius: "10px",
-  maxWidth: "130px",
 };
 
 const imageStyle = {
@@ -49,19 +48,22 @@ export const ProductTile = ({ product }) => {
         >
           {product.title}
         </Typography>
-        <Typography
-          className="score"
-          variant="p"
-          align="center"
-          color="textSecondary"
-          component="p"
-          gutterBottom
-          sx={{
-            fontSize: "11px",
-          }}
-        >
-          Score: {product.score}
-        </Typography>
+        {product.score != null && (
+          <Typography
+            className="score"
+            variant="p"
+            align="center"
+            color="textSecondary"
+            component="p"
+            gutterBottom
+            sx={{
+              marginTop: "auto",
+              fontSize: "11px",
+            }}
+          >
+            Score: {product.score}
+          </Typography>
+        )}
       </Box>
     </Tooltip>
   );
