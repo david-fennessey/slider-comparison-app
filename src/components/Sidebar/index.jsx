@@ -6,7 +6,6 @@ import {
   Card,
   CardContent,
   InputAdornment,
-  InputLabel,
   TextField,
   Typography,
 } from "@mui/material";
@@ -14,7 +13,6 @@ import {
 import ModelCheckboxes from "../ModelCheckboxes/ModelCheckboxes";
 import RandomSkuButton from "../OutlinedButton";
 import { ProductTile } from "../RecommendationCarousel/RecommendationCarousel";
-
 const Sidebar = ({
   models,
   setModelVisibility,
@@ -33,9 +31,18 @@ const Sidebar = ({
         height: "100vh",
         paddingRight: "1rem",
         borderRight: "1px solid rgba(128, 128, 128, 0.5)",
+        display: "flex",
+        flexDirection: "column",
+        "& > div": {
+          marginBottom: "10px",
+        },
       }}
     >
-      <Box>
+      <Box
+        sx={{
+          height: "210px",
+        }}
+      >
         <Typography
           variant="h6"
           color="textSecondary"
@@ -71,13 +78,6 @@ const Sidebar = ({
         >
           Search For a SKU
         </Typography>
-        <InputLabel
-          shrink={!!querySku}
-          htmlFor="outlined-basic"
-          style={{ display: !!querySku ? "none" : "block" }}
-        >
-          SKU
-        </InputLabel>
         <TextField
           id="outlined-basic"
           label=""
@@ -96,7 +96,6 @@ const Sidebar = ({
       <Box>
         <RandomSkuButton setQuerySku={setQuerySku} allSkus={allSkus} />
       </Box>
-
       <Box>
         <Typography
           variant="h6"
