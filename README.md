@@ -28,7 +28,7 @@ It generally requires:
 
 - A list of SKUs with products and attributes where the SKU is the key of the product slug.
 
-```json
+```
 {
 	"1": {
 		"title": "Wireless Bluetooth Headphones ",
@@ -41,14 +41,14 @@ It generally requires:
 		"price": "$129.99",
 		"image": "https://source.unsplash.com/random/150x150/?smartwatch",
 		"sku": "2"
-	},
+	}
 ...
 }
 ```
 
 - It also expects a result mapping, where the key is the "source" SKU, and the payload contains the SKU of the recommended item, the score (confidence / relevancy / etc.), and any additional data you want to be displayed on a hover tooltip (see screenshot above). In the following example, this would be the result set for SKU 1.
 
-```json
+```
 {
 	"1": [
 		{
@@ -67,7 +67,8 @@ It generally requires:
 		    "field2": "random2",
 		    "height": "medium"
 		  }
-		},
+		}
+...
 ```
 
-Please reach out on
+Feel free to open issues / PR's if you want to help contribute!
