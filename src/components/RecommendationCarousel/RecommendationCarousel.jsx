@@ -28,10 +28,10 @@ const StyledContainer = styled(Box)`
   --swiper-navigation-size: 22px;
   --swiper-navigation-top-offset: 75px;
   --swiper-navigation-sides-offset: 10px;
-  
+
   .swiper-button-next,
   .swiper-button-prev {
-    width: 30px; 
+    width: 30px;
     height: 30px;
     background-color: #fff;
     border-radius: 50%;
@@ -42,21 +42,14 @@ const StyledContainer = styled(Box)`
   &:hover {
     .swiper-button-next:not(.swiper-button-disabled),
     .swiper-button-prev:not(.swiper-button-disabled) {
-    opacity: 1;
+      opacity: 1;
     }
-  };
+  }
 
   .swiper-button-next::after,
   .swiper-button-prev::after {
-    font-size: 22px; 
+    font-size: 22px;
   }
-
-  .swiper-button-next {
-    right: 10px;
-  }
-
-  .swiper-button-prev {
-    left: 10px;
 `;
 
 export const ProductTile = ({ product }) => {

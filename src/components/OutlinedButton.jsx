@@ -22,7 +22,7 @@ const OutlinedButton = ({ setQuerySku, allSkus }) => {
           variant="outlined"
           onClick={() => pickRandomSkuAndSetQuerySku(allSkus, setQuerySku)}
         >
-          "Random SKU"
+          Random SKU
         </Button>
       </Stack>
     </div>
