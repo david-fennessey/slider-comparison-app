@@ -12,12 +12,13 @@ import {
 
 import FancyButton from "../FancyButton";
 import ModelCheckboxes from "../ModelCheckboxes/ModelCheckboxes";
+import { ProductTile } from "../RecommendationCarousel/RecommendationCarousel";
 
 const Sidebar = ({
   models,
   setModelVisibility,
-  anchorSkuProduct,
-  setAnchorSku,
+  querySkuModel,
+  setQuerySku,
 }) => {
   return (
     <Box
@@ -34,21 +35,26 @@ const Sidebar = ({
           component="h2"
           gutterBottom
         >
-          Anchor SKU
+          Query SKU
         </Typography>
-        <Card sx={{ maxWidth: "100%", height: "auto", aspectRatio: "1/1" }}>
-          <CardContent>
-            <Typography
-              variant="h6"
-              color="textSecondary"
-              component="h6"
-              align="center"
-            >
-              No SKU selected right now, start by searching for a SKU or using
-              Random SKU
-            </Typography>
-          </CardContent>
-        </Card>
+        {console.log(querySkuModel)}
+        {querySkuModel ? (
+          <ProductTile product={querySkuModel} />
+        ) : (
+          <Card sx={{ maxWidth: "100%", height: "auto", aspectRatio: "1/1" }}>
+            <CardContent>
+              <Typography
+                variant="h6"
+                color="textSecondary"
+                component="h6"
+                align="center"
+              >
+                No SKU is selected right now, start by searching for a SKU or
+                using Random SKU
+              </Typography>
+            </CardContent>
+          </Card>
+        )}
       </Box>
       <Box>
         <Typography
@@ -63,10 +69,10 @@ const Sidebar = ({
           id="outlined-basic"
           label="SKU"
           variant="outlined"
-          onChange={(value) => setAnchorSku(value)}
+          onChange={(event) => setQuerySku(event.target.value)}
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end" onClick={setAnchorSku}>
+              <InputAdornment position="end" onClick={setQuerySku}>
                 <SearchIcon color="action" />
               </InputAdornment>
             ),

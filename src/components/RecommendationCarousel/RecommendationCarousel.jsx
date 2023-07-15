@@ -15,7 +15,7 @@ const productTileStyle = {
   borderRadius: "10px",
 };
 
-const ProductTile = ({ product }) => {
+export const ProductTile = ({ product }) => {
   return (
     <Box className="slide" sx={productTileStyle}>
       <img src={product.image} alt={product.title} />
@@ -30,7 +30,6 @@ const ProductTile = ({ product }) => {
           flexGrow: 1,
           fontSize: "11px",
           maxWidth: "100%",
-          overflow: "hidden",
           textOverflow: "ellipsis",
           display: "-webkit-box",
           WebkitBoxOrient: "vertical",
@@ -89,7 +88,7 @@ const RecommendationCarousel = ({ carouselName, products }) => {
   };
 
   return (
-    <Box>
+    <Box sx={{ width: "100%" }}>
       <Typography
         variant="h6"
         align="left"

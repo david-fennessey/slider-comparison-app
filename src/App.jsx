@@ -12,6 +12,7 @@ import {
 
 import Content from "./components/Content";
 import Sidebar from "./components/Sidebar";
+import loadSkus from "./utilities/load_skus";
 import loadAndParseSourceA from "./utilities/load_source_a";
 import loadAndParseSourceB from "./utilities/load_source_b";
 import loadAndParseSourceC from "./utilities/load_source_c";
@@ -23,6 +24,7 @@ const drawerWidth = 240;
 
 const AppContainer = () => {
   // We enable the first algorithm by default, so we set the first element to true. Rest start as invisible
+
   const [models, setModelState] = useState({
     1: {
       id: 1,
@@ -44,15 +46,10 @@ const AppContainer = () => {
     },
   });
 
-  const [anchorSku, setAnchorSku] = useState(null);
-
-  const anchorSkuProduct = {
-    id: 9999,
-    sku: "2802439",
-    title: "Default Item",
-    price: "$29.99",
-    image: "https://source.unsplash.com/random/150x150/?default",
-  };
+  // Getting all valid skus, and then doing a lookup on the query sku to get the product details for rendering
+  var allSkus = loadSkus();
+  const [querySku, setQuerySku] = useState(null);
+  const querySkuModel = allSkus[querySku];
 
   const toggleModelVisibility = (key) => {
     setModelState({
@@ -60,6 +57,8 @@ const AppContainer = () => {
       [key]: { ...models[key], visible: !models[key].visible },
     });
   };
+
+  console.log(querySkuModel);
 
   return (
     <Box
@@ -89,13 +88,13 @@ const AppContainer = () => {
           <Sidebar
             models={models}
             setModelVisibility={toggleModelVisibility}
-            setAnchorSku={setAnchorSku}
-            anchorSkuProduct={anchorSkuProduct}
+            setQuerySku={setQuerySku}
+            querySkuModel={querySkuModel}
           />
         </Box>
         <Box component="main" sx={{ flexGrow: 1, p: "1rem", overflow: "auto" }}>
           <Container>
-            <Content models={models} anchorSku={anchorSku} />
+            <Content models={models} querySku={querySku} />
           </Container>
         </Box>
       </Box>
