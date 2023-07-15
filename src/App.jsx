@@ -92,7 +92,10 @@ const AppContainer = () => {
             querySkuModel={querySkuModel}
           />
         </Box>
-        <Box component="main" sx={{ flexGrow: 1, p: "1rem", overflow: "auto" }}>
+        <Box
+          component="main"
+          sx={{ flexGrow: 0, p: "1rem", maxWidth: "80vw", overflow: "auto" }}
+        >
           <Container>
             <Content models={models} querySku={querySku} />
           </Container>

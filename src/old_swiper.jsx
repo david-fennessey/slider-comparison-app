@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Box, Tooltip, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Pagination, Scrollbar } from "swiper/modules";
@@ -16,76 +16,57 @@ const productTileStyle = {
   margin: "10px",
   backgroundColor: "#f0f0f0",
   borderRadius: "10px",
-  maxWidth: "130px",
-};
-
-const imageStyle = {
-  height: "150px",
-  objectFit: "cover",
-  objectPosition: "center",
 };
 
 export const ProductTile = ({ product }) => {
   return (
-    <Tooltip title={"Price: " + product.price} enterDelay={500}>
-      <Box className="slide" sx={productTileStyle}>
-        <img src={product.image} alt={product.title} style={imageStyle} />
-        <Typography
-          className="title"
-          variant="p"
-          align="center"
-          color="textPrimary"
-          component="p"
-          sx={{
-            padding: "2px",
-            fontSize: "11px",
-            maxWidth: "100%",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            display: "-webkit-box",
-            WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 2,
-          }}
-        >
-          {product.title}
-        </Typography>
-        <Typography
-          className="score"
-          variant="p"
-          align="center"
-          color="textSecondary"
-          component="p"
-          gutterBottom
-          sx={{
-            fontSize: "11px",
-          }}
-        >
-          Score: {product.score}
-        </Typography>
-      </Box>
-    </Tooltip>
+    <Box className="slide" sx={productTileStyle}>
+      <img src={product.image} alt={product.title} />
+      <Typography
+        className="title"
+        variant="p"
+        align="center"
+        color="textPrimary"
+        component="p"
+        sx={{
+          padding: "2px",
+          flexGrow: 1,
+          fontSize: "11px",
+          maxWidth: "100%",
+          overflow: "hidden",
+          textOverflow: "ellipsis",
+          display: "-webkit-box",
+          WebkitBoxOrient: "vertical",
+          WebkitLineClamp: 2,
+        }}
+      >
+        {product.title}
+      </Typography>
+      <Typography
+        className="price"
+        variant="p"
+        align="center"
+        color="textSecondary"
+        component="p"
+        gutterBottom
+      >
+        Score: {product.score}
+      </Typography>
+    </Box>
   );
 };
 
 const RecommendationCarousel = ({ carouselName, products }) => {
   const breakpoints = {
-    1200: {
-      slidesPerView: 6,
-      slidesPerGroup: 6,
-    },
     1024: {
-      slidesPerView: 5,
-      slidesPerGroup: 5,
+      slidesPerView: 7,
+      slidesPerGroup: 7,
     },
-    768: {
+    600: {
       slidesPerView: 4,
       slidesPerGroup: 4,
     },
     480: {
-      slidesPerView: 3,
-      slidesPerGroup: 3,
-    },
-    0: {
       slidesPerView: 2,
       slidesPerGroup: 2,
     },
@@ -108,6 +89,8 @@ const RecommendationCarousel = ({ carouselName, products }) => {
       </Typography>
       <Swiper
         modules={[Navigation, Pagination, Scrollbar]}
+        slidesPerView={7}
+        slidesPerGroup={7}
         spaceBetween={10}
         navigation={true}
         pagination={{ clickable: true }}
