@@ -6,19 +6,22 @@ import {
   Card,
   CardContent,
   InputAdornment,
+  InputLabel,
   TextField,
   Typography,
 } from "@mui/material";
 
-import FancyButton from "../FancyButton";
 import ModelCheckboxes from "../ModelCheckboxes/ModelCheckboxes";
+import RandomSkuButton from "../OutlinedButton";
 import { ProductTile } from "../RecommendationCarousel/RecommendationCarousel";
 
 const Sidebar = ({
   models,
   setModelVisibility,
   querySkuModel,
+  querySku,
   setQuerySku,
+  allSkus,
 }) => {
   return (
     <Box
@@ -35,7 +38,7 @@ const Sidebar = ({
           component="h2"
           gutterBottom
         >
-          Query SKU
+          Query SKU: {querySku}
         </Typography>
         {querySkuModel ? (
           <ProductTile product={querySkuModel} />
@@ -64,14 +67,22 @@ const Sidebar = ({
         >
           Search For a SKU
         </Typography>
+        <InputLabel
+          shrink={!!querySku}
+          htmlFor="outlined-basic"
+          style={{ display: !!querySku ? "none" : "block" }}
+        >
+          SKU
+        </InputLabel>
         <TextField
           id="outlined-basic"
-          label="SKU"
+          label=""
           variant="outlined"
+          value={querySku}
           onChange={(event) => setQuerySku(event.target.value)}
           InputProps={{
             endAdornment: (
-              <InputAdornment position="end" onClick={setQuerySku}>
+              <InputAdornment position="end" onClick={() => setQuerySku("")}>
                 <SearchIcon color="action" />
               </InputAdornment>
             ),
@@ -79,7 +90,7 @@ const Sidebar = ({
         />
       </Box>
       <Box>
-        <FancyButton buttonText="Random SKU" />
+        <RandomSkuButton setQuerySku={setQuerySku} allSkus={allSkus} />
       </Box>
 
       <Box>

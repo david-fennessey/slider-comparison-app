@@ -88,6 +88,8 @@ const AppContainer = () => {
             setModelVisibility={toggleModelVisibility}
             setQuerySku={setQuerySku}
             querySkuModel={querySkuModel}
+            querySku={querySku}
+            allSkus={allSkus}
           />
         </Box>
         <Box
@@ -95,7 +97,7 @@ const AppContainer = () => {
           sx={{ flexGrow: 0, p: "1rem", maxWidth: "80vw", overflow: "auto" }}
         >
           <Container>
-            <Content models={models} querySku={querySku} />
+            <Content models={models} querySku={querySku} allSkus={allSkus} />
           </Container>
         </Box>
       </Box>

@@ -25,8 +25,19 @@ const imageStyle = {
 };
 
 export const ProductTile = ({ product }) => {
+  console.log(product.meta);
   return (
-    <Tooltip title={"Price: " + product.price} enterDelay={500}>
+    <Tooltip
+      title={
+        product.meta &&
+        Object.entries(product.meta).map(([key, value]) => (
+          <div key={key}>
+            <strong>{key}: </strong> {value}
+          </div>
+        ))
+      }
+      enterDelay={1000}
+    >
       <Box className="slide" sx={productTileStyle}>
         <img src={product.image} alt={product.title} style={imageStyle} />
         <Typography

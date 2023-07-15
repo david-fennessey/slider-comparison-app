@@ -1,132 +1,160 @@
 {
-	"1":  [
+	"1": [
 		{
-		  "id": 9,
-		  "title": "Wireless Gaming Mouse",
+		  "sku": 9,
 		  "score": 1,
-		  "price": "$49.99",
-		  "image": "https://source.unsplash.com/random/150x150/?gamingmouse"
+		  "meta": {
+		    "field2": "random1",
+		    "height": "large",
+		    "availability": "true"
+		  }
 		},
 		{
-		  "id": 4,
-		  "title": "Wireless Charging Pad",
+		  "sku": 4,
 		  "score": 0.87965341,
-		  "price": "$29.99",
-		  "image": "https://source.unsplash.com/random/150x150/?wirelesscharger"
+		  "meta": {
+		    "field2": "random2",
+		    "height": "medium"
+		  }
 		},
 		{
-		  "id": 6,
-		  "title": "Waterproof Bluetooth Speaker",
+		  "sku": 6,
 		  "score": 0.79846532,
-		  "price": "$39.99",
-		  "image": "https://source.unsplash.com/random/150x150/?bluetoothspeaker"
+		  "meta": {
+		    "field2": "random3",
+		    "height": "small",
+		    "availability": "false"
+		  }
 		},
 		{
-		  "id": 2,
-		  "title": "Smart Watch with Heart Rate Monitoring",
+		  "sku": 2,
 		  "score": 0.73258697,
-		  "price": "$129.99",
-		  "image": "https://source.unsplash.com/random/150x150/?smartwatch"
+		  "meta": {
+		    "field2": "random4",
+		    "height": "medium"
+		  }
 		},
 		{
-		  "id": 1,
-		  "title": "Wireless Bluetooth Headphones aosidjfaoidjf aodfsi jaoisdfja odsifj asdofij ",
+		  "sku": 1,
 		  "score": 0.65132658,
-		  "price": "$69.99",
-		  "image": "https://source.unsplash.com/random/150x150/?headphones"
+		  "meta": {
+		    "field2": "random5",
+		    "height": "large"
+		  }
 		},
 		{
-		  "id": 7,
-		  "title": "Fitness Tracker Watch",
+		  "sku": 7,
 		  "score": 0.59610574,
-		  "price": "$59.99",
-		  "image": "https://source.unsplash.com/random/150x150/?fitbit"
+		  "meta": {
+		    "field2": "random6",
+		    "height": "small"
+		  }
 		},
 		{
-		  "id": 5,
-		  "title": "Noise Cancelling Earbuds",
+		  "sku": 5,
 		  "score": 0.46895321,
-		  "price": "$49.99",
-		  "image": "https://source.unsplash.com/random/150x150/?earbuds"
+		  "meta": {
+		    "field2": "random7",
+		    "height": "medium",
+		    "availability": "true"
+		  }
 		},
 		{
-		  "id": 3,
-		  "title": "Portable Espresso Machine",
+		  "sku": 3,
 		  "score": 0.36128764,
-		  "price": "$79.99",
-		  "image": "https://source.unsplash.com/random/150x150/?espresso"
+		  "meta": {
+		    "field2": "random8",
+		    "height": "small",
+		    "availability": "false"
+		  }
 		},
 		{
-		  "id": 8,
-		  "title": "Portable Power Bank",
+		  "sku": 8,
 		  "score": 0.24532789,
-		  "price": "$24.99",
-		  "image": "https://source.unsplash.com/random/150x150/?powerbank"
+		  "meta": {
+		    "field2": "random9",
+		    "height": "large",
+		    "availability": "true"
+		  }
 		}
 	  ],
-	  "2":  [
+	  "2": [
 		{
-		  "id": 9,
-		  "title": "Wireless Gaming Mouse",
+		  "sku": 9,
 		  "score": 1,
-		  "price": "$49.99",
-		  "image": "https://source.unsplash.com/random/150x150/?gamingmouse"
+		  "meta": {
+		    "field2": "random10",
+		    "height": "large",
+		    "availability": "true"
+		  }
 		},
 		{
-		  "id": 4,
-		  "title": "Wireless Charging Pad",
+		  "sku": 4,
 		  "score": 0.87965341,
-		  "price": "$29.99",
-		  "image": "https://source.unsplash.com/random/150x150/?wirelesscharger"
+		  "meta": {
+		    "field2": "random11",
+		    "height": "medium"
+		  }
 		},
 		{
-		  "id": 6,
-		  "title": "Waterproof Bluetooth Speaker",
+		  "sku": 6,
 		  "score": 0.79846532,
-		  "price": "$39.99",
-		  "image": "https://source.unsplash.com/random/150x150/?bluetoothspeaker"
+		  "meta": {
+		    "field2": "random12",
+		    "height": "small",
+		    "availability": "false"
+		  }
 		},
 		{
-		  "id": 2,
-		  "title": "Smart Watch with Heart Rate Monitoring",
+		  "sku": 2,
 		  "score": 0.73258697,
-		  "price": "$129.99",
-		  "image": "https://source.unsplash.com/random/150x150/?smartwatch"
+		  "meta": {
+		    "field2": "random13",
+		    "height": "medium"
+		  }
 		},
 		{
-		  "id": 1,
-		  "title": "Wireless Bluetooth Headphones aosidjfaoidjf aodfsi jaoisdfja odsifj asdofij ",
+		  "sku": 1,
 		  "score": 0.65132658,
-		  "price": "$69.99",
-		  "image": "https://source.unsplash.com/random/150x150/?headphones"
+		  "meta": {
+		    "field2": "random14",
+		    "height": "large"
+		  }
 		},
 		{
-		  "id": 7,
-		  "title": "Fitness Tracker Watch",
+		  "sku": 7,
 		  "score": 0.59610574,
-		  "price": "$59.99",
-		  "image": "https://source.unsplash.com/random/150x150/?fitbit"
+		  "meta": {
+		    "field2": "random15",
+		    "height": "small"
+		  }
 		},
 		{
-		  "id": 5,
-		  "title": "Noise Cancelling Earbuds",
+		  "sku": 5,
 		  "score": 0.46895321,
-		  "price": "$49.99",
-		  "image": "https://source.unsplash.com/random/150x150/?earbuds"
+		  "meta": {
+		    "field2": "random16",
+		    "height": "medium",
+		    "availability": "true"
+		  }
 		},
 		{
-		  "id": 3,
-		  "title": "Portable Espresso Machine",
+		  "sku": 3,
 		  "score": 0.36128764,
-		  "price": "$79.99",
-		  "image": "https://source.unsplash.com/random/150x150/?espresso"
+		  "meta": {
+		    "field2": "random17",
+		    "height": "small",
+		    "availability": "false"
+		  }
 		},
 		{
-		  "id": 8,
-		  "title": "Portable Power Bank",
+		  "sku": 8,
 		  "score": 0.24532789,
-		  "price": "$24.99",
-		  "image": "https://source.unsplash.com/random/150x150/?powerbank"
+		  "meta": {
+		    "field2": "random18",
+		    "height": "large",
+		    "availability": "true"
+		  }
 		}
 	  ]
 }

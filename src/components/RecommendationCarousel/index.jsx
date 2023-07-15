@@ -5,13 +5,24 @@ import { isEmpty } from "lodash";
 
 import RecommendationCarousel from "./RecommendationCarousel";
 
-const CarouselContainer = ({ fetchDataFunction, carouselName, querySku }) => {
+const CarouselContainer = ({
+  fetchDataFunction,
+  carouselName,
+  querySku,
+  allSkus,
+}) => {
   const [response, setResponse] = useState(null);
-  console.log(querySku);
 
   useEffect(() => {
-    setResponse(fetchDataFunction()[querySku] || []);
-  }, [fetchDataFunction, querySku]);
+    var skusAndScores = fetchDataFunction()[querySku] || [];
+    setResponse(
+      skusAndScores.map((skuAndScore) => ({
+        ...allSkus[skuAndScore.sku],
+        score: skuAndScore.score,
+        meta: skuAndScore.meta,
+      }))
+    );
+  }, [fetchDataFunction, querySku, allSkus]);
 
   return !isEmpty(response) ? (
     <RecommendationCarousel carouselName={carouselName} products={response} />
@@ -28,7 +39,7 @@ const CarouselContainer = ({ fetchDataFunction, carouselName, querySku }) => {
         fontSize: "11px",
       }}
     >
-      {carouselName} has no recommendations for sku {querySku}
+      {carouselName} has no data for sku {querySku}
     </Typography>
   );
 };

@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 
 import CarouselContainer from "../RecommendationCarousel";
 
-const Content = ({ querySku, models }) => {
+const Content = ({ querySku, models, allSkus }) => {
   return (
     <Box
       sx={{
@@ -18,6 +18,7 @@ const Content = ({ querySku, models }) => {
               key={model.id}
               fetchDataFunction={model.data}
               carouselName={model.name}
+              allSkus={allSkus}
               querySku={querySku}
             />
           );
