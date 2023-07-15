@@ -23,6 +23,10 @@ const Sidebar = ({
   setQuerySku,
   allSkus,
 }) => {
+  const handleQuerySkuChange = (event) => {
+    setQuerySku(event.target.value);
+  };
+
   return (
     <Box
       sx={{
@@ -79,7 +83,7 @@ const Sidebar = ({
           label=""
           variant="outlined"
           value={querySku}
-          onChange={(event) => setQuerySku(event.target.value)}
+          onChange={handleQuerySkuChange}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end" onClick={() => setQuerySku("")}>
