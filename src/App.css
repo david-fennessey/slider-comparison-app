@@ -14,3 +14,5 @@ button {
 .slick-next:before {
   color: #09529b !important;
 }
+
+--swiper-navigation-sides-offset: 40px;

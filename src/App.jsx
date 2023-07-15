@@ -1,14 +1,7 @@
 import { useState } from "react";
 
 import styled from "@emotion/styled";
-import {
-  AppBar,
-  Box,
-  Container,
-  CssBaseline,
-  Toolbar,
-  Typography,
-} from "@mui/material";
+import { AppBar, Box, CssBaseline, Toolbar, Typography } from "@mui/material";
 
 import Content from "./components/Content";
 import Sidebar from "./components/Sidebar";
@@ -94,11 +87,12 @@ const AppContainer = () => {
         </Box>
         <Box
           component="main"
-          sx={{ flexGrow: 0, p: "1rem", maxWidth: "80vw", overflow: "auto" }}
+          sx={{
+            width: `calc(100vw - ${drawerWidth}px)`,
+            overflow: "hidden",
+          }}
         >
-          <Container>
-            <Content models={models} querySku={querySku} allSkus={allSkus} />
-          </Container>
+          <Content models={models} querySku={querySku} allSkus={allSkus} />
         </Box>
       </Box>
     </Box>

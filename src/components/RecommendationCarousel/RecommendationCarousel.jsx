@@ -1,31 +1,65 @@
 import React from "react";
 
+import styled from "@emotion/styled";
 import { Box, Tooltip, Typography } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation, Pagination, Scrollbar } from "swiper/modules";
+import { Navigation, Scrollbar } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import "slick-carousel/slick/slick-theme.css";
-import "slick-carousel/slick/slick.css";
 
 const productTileStyle = {
   display: "flex",
   flexDirection: "column",
-  height: "200px",
-  margin: "10px",
+  width: "150px",
+  alignItems: "center",
   backgroundColor: "#f0f0f0",
   borderRadius: "10px",
 };
 
 const imageStyle = {
   height: "150px",
+  width: "150px",
   objectFit: "cover",
   objectPosition: "center",
 };
 
+const StyledContainer = styled(Box)`
+  max-width: 1700px;
+  --swiper-navigation-size: 22px;
+  --swiper-navigation-top-offset: 75px;
+  --swiper-navigation-sides-offset: 10px;
+  
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 30px; 
+    height: 30px;
+    background-color: #fff;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover {
+    .swiper-button-next:not(.swiper-button-disabled),
+    .swiper-button-prev:not(.swiper-button-disabled) {
+    opacity: 1;
+    }
+  };
+
+  .swiper-button-next::after,
+  .swiper-button-prev::after {
+    font-size: 22px; 
+  }
+
+  .swiper-button-next {
+    right: 10px;
+  }
+
+  .swiper-button-prev {
+    left: 10px;
+`;
+
 export const ProductTile = ({ product }) => {
-  console.log(product.meta);
   return (
     <Tooltip
       title={
@@ -81,31 +115,18 @@ export const ProductTile = ({ product }) => {
 };
 
 const RecommendationCarousel = ({ carouselName, products }) => {
-  const breakpoints = {
-    1200: {
-      slidesPerView: 6,
-      slidesPerGroup: 6,
-    },
-    1024: {
-      slidesPerView: 5,
-      slidesPerGroup: 5,
-    },
-    768: {
-      slidesPerView: 4,
-      slidesPerGroup: 4,
-    },
-    480: {
-      slidesPerView: 3,
-      slidesPerGroup: 3,
-    },
-    0: {
-      slidesPerView: 2,
-      slidesPerGroup: 2,
-    },
-  };
+  let breakpoints = {};
+
+  for (let i = 0; i < 10; i++) {
+    breakpoints[i * 180] = {
+      slidesPerView: i - 1,
+      slidesPerGroup: i - 1,
+      spaceBetween: 10,
+    };
+  }
 
   return (
-    <Box>
+    <StyledContainer>
       <Typography
         variant="h6"
         align="left"
@@ -114,17 +135,14 @@ const RecommendationCarousel = ({ carouselName, products }) => {
         gutterBottom
         sx={{
           fontSize: "14px",
-          marginBottom: "2px",
         }}
       >
         {carouselName || "No Model Name Found!"}
       </Typography>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar]}
-        spaceBetween={10}
-        navigation={true}
-        pagination={{ clickable: true }}
+        modules={[Navigation, Scrollbar]}
         breakpoints={breakpoints}
+        navigation={true}
       >
         {products.map((product) => (
           <SwiperSlide key={product.id}>
@@ -132,7 +150,7 @@ const RecommendationCarousel = ({ carouselName, products }) => {
           </SwiperSlide>
         ))}
       </Swiper>
-    </Box>
+    </StyledContainer>
   );
 };
 

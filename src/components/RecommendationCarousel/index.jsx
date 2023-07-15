@@ -33,10 +33,10 @@ const CarouselContainer = ({
       align="center"
       color="textSecondary"
       component="p"
-      gutterBottom
       sx={{
-        marginTop: "auto",
+        paddingBottom: "2rem",
         fontSize: "11px",
+        paddingLeft: "10px",
       }}
     >
       {carouselName} has no data for sku {querySku}

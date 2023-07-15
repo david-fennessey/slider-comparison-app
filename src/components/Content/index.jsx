@@ -6,9 +6,9 @@ const Content = ({ querySku, models, allSkus }) => {
   return (
     <Box
       sx={{
-        paddingX: "2rem",
-        backgroundColor: "rgba(0, 0, 0, 0.055)",
         borderRadius: "20px",
+        paddingTop: "2rem",
+        paddingX: "2rem",
       }}
     >
       {Object.values(models).map((model) => {
