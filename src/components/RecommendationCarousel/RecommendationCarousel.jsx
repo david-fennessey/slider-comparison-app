@@ -11,6 +11,7 @@ const productTileStyle = {
   display: "flex",
   flexDirection: "column",
   width: "150px",
+  height: "225px",
   alignItems: "center",
   backgroundColor: "#f0f0f0",
   borderRadius: "10px",
@@ -81,7 +82,7 @@ export const ProductTile = ({ product }) => {
             textOverflow: "ellipsis",
             display: "-webkit-box",
             WebkitBoxOrient: "vertical",
-            WebkitLineClamp: 2,
+            WebkitLineClamp: 3,
           }}
         >
           {product.title}

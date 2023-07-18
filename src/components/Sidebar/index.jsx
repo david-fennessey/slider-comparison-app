@@ -40,7 +40,7 @@ const Sidebar = ({
     >
       <Box
         sx={{
-          height: "210px",
+          height: "225px",
         }}
       >
         <Typography
