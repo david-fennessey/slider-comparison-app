@@ -21,19 +21,19 @@ const AppContainer = () => {
   const [models, setModelState] = useState({
     1: {
       id: 1,
-      name: "Source A",
+      name: "Title Embedding",
       visible: true,
       data: loadAndParseSourceA,
     },
     2: {
       id: 2,
-      name: "Source B",
+      name: "OpenAI Terms + Jaccard",
       visible: false,
       data: loadAndParseSourceB,
     },
     3: {
       id: 3,
-      name: "Source C",
+      name: "OpenAI Terms + Pseudo Jaccard (live)",
       visible: false,
       data: loadAndParseSourceC,
     },
